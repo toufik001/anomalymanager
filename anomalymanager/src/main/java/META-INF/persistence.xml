@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="anomalymanager">
+		<class>com.myprojects.anomalymanager.bo.Agent</class>
+		<class>com.myprojects.anomalymanager.bo.Anomaly</class>
+		<class>com.myprojects.anomalymanager.bo.Conductor</class>
+		<class>com.myprojects.anomalymanager.bo.Machine</class>
+		<class>com.myprojects.anomalymanager.bo.Reparation</class>
+		<class>com.myprojects.anomalymanager.bo.Restriction</class>
+		<class>com.myprojects.anomalymanager.bo.Train</class>
+	</persistence-unit>
+</persistence>
