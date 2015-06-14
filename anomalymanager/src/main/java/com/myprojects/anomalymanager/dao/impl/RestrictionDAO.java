@@ -18,7 +18,7 @@ public class RestrictionDAO extends DAO<Restriction> {
 		try {
 			PreparedStatement prst = this.connection
 					.prepareStatement("insert into restriction(restriction,numMachine) values(?,?)");
-			prst.setString(1, restriction.getRestriction());
+			prst.setString(1, restriction.getDescription());
 			prst.setLong(2, numMachine);
 			prst.executeUpdate();
 		} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class RestrictionDAO extends DAO<Restriction> {
 		try {
 			PreparedStatement prst = this.connection
 					.prepareStatement("update restriction set restriction=? where numRestriction=? ");
-			prst.setString(1, obj.getRestriction());
+			prst.setString(1, obj.getDescription());
 			prst.setLong(2, obj.getNumRestriction());
 			prst.executeUpdate();
 		} catch (SQLException e) {
@@ -106,7 +106,7 @@ public class RestrictionDAO extends DAO<Restriction> {
 		}
 		for (Restriction restriction : restrictions) {
 			System.out.println("num: " + restriction.getNumRestriction()
-					+ "rest: " + restriction.getRestriction());
+					+ "rest: " + restriction.getDescription());
 		}
 
 		// System.out.println("num="+res.trouver(1).getNumRestriction()+"restriction: "+res.trouver(1).getRestriction());

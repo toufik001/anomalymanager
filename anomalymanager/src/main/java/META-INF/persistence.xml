@@ -4,9 +4,11 @@
 		<class>com.myprojects.anomalymanager.bo.Agent</class>
 		<class>com.myprojects.anomalymanager.bo.Anomaly</class>
 		<class>com.myprojects.anomalymanager.bo.Conductor</class>
+		<class>com.myprojects.anomalymanager.bo.Line</class>
 		<class>com.myprojects.anomalymanager.bo.Machine</class>
 		<class>com.myprojects.anomalymanager.bo.Reparation</class>
 		<class>com.myprojects.anomalymanager.bo.Restriction</class>
+		<class>com.myprojects.anomalymanager.bo.Station</class>
 		<class>com.myprojects.anomalymanager.bo.Train</class>
 	</persistence-unit>
 </persistence>

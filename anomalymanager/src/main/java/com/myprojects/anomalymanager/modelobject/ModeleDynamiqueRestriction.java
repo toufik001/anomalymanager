@@ -23,7 +23,7 @@ public class ModeleDynamiqueRestriction extends ModelObject<Restriction> {
 		case 0:
 			return this.getObjets().get(rowIndex).getNumRestriction();
 		case 1:
-			return this.getObjets().get(rowIndex).getRestriction();
+			return this.getObjets().get(rowIndex).getDescription();
 
 		default:
 			return null;
