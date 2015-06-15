@@ -1,8 +1,6 @@
-package com.myprojects.anomalymanager.bo;
+package com.myprojects.anomalymanager.modelobject;
 
 import javax.swing.JTable;
-
-import com.myprojects.anomalymanager.modelobject.ModelObject;
 
 
 @SuppressWarnings("serial")

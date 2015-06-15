@@ -29,9 +29,9 @@ public class Machine implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column
+	@Column(unique=true,nullable=false)
 	private String matMachine;
-	@Column
+	@Column(unique=true,nullable=false)
 	private String serie;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Anomaly> anomalies = new ArrayList<Anomaly>();
@@ -51,11 +51,11 @@ public class Machine implements Serializable {
 	}
 	
 	public Machine(Machine machine) {
-		this.id = new Long(machine.getId());
-		this.matMachine = new String(machine.getMatMachine());
-		this.serie = new String(machine.getSerie());
-		this.anomalies = machine.getAnomalies();
-		this.restrictions = machine.getRestrictions();
+		this.setId(machine.getId());
+		this.setMatMachine(machine.getMatMachine());
+		this.setSerie(machine.getSerie());
+		this.setAnomalies(machine.getAnomalies());
+		this.setRestrictions(machine.getRestrictions());
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class Machine implements Serializable {
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
-		this.id = id;
+		this.id = new Long(id);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Machine implements Serializable {
 	 * @param matMachine the matMachine to set
 	 */
 	public void setMatMachine(String matMachine) {
-		this.matMachine = matMachine;
+		this.matMachine = new String(matMachine);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class Machine implements Serializable {
 	 * @param serie the serie to set
 	 */
 	public void setSerie(String serie) {
-		this.serie = serie;
+		this.serie = new String(serie);
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class Machine implements Serializable {
 	 * @param anomalies the anomalies to set
 	 */
 	public void setAnomalies(List<Anomaly> anomalies) {
-		this.anomalies = anomalies;
+		if (anomalies != null) this.anomalies = new ArrayList<Anomaly>(anomalies);
 	}
 
 	/**
@@ -125,7 +125,59 @@ public class Machine implements Serializable {
 	 * @param restrictions the restrictions to set
 	 */
 	public void setRestrictions(List<Restriction> restrictions) {
-		this.restrictions = restrictions;
+		if(restrictions != null) this.restrictions = new ArrayList<Restriction>(restrictions);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((matMachine == null) ? 0 : matMachine.hashCode());
+		result = prime * result + ((serie == null) ? 0 : serie.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Machine other = (Machine) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (matMachine == null) {
+			if (other.matMachine != null)
+				return false;
+		} else if (!matMachine.equals(other.matMachine))
+			return false;
+		if (serie == null) {
+			if (other.serie != null)
+				return false;
+		} else if (!serie.equals(other.serie))
+			return false;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Machine [id=" + id + ", matMachine=" + matMachine + ", serie=" + serie + ", anomalies=" + anomalies
+				+ ", restrictions=" + restrictions + "]";
 	}
 
 

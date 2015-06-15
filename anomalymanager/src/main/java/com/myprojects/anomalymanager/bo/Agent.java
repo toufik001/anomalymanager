@@ -19,7 +19,7 @@ public class Agent {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column(unique=true)
+	@Column(unique=true,nullable=false)
 	private String matAgent;
 	@Column
 	private String password;
@@ -55,12 +55,12 @@ public class Agent {
 	 * @param agent
 	 */
 	public Agent(Agent agent) {
-		this.id = new Long(agent.getId());
-		this.matAgent = new String(agent.getMatAgent());
-		this.password = new String(agent.getPassword());
-		this.name = new String(agent.getName());
-		this.poste = new String(agent.getPoste());
-		this.affectation = new String(agent.getAffectation());
+		this.setId(agent.getId());
+		this.setMatAgent(agent.getMatAgent());
+		this.setPassword(agent.getPassword());
+		this.setName(agent.getName());
+		this.setPoste(agent.getPoste());
+		this.setAffectation(agent.getAffectation());
 	}
 	/**
 	 * @return the matAgent
@@ -73,7 +73,7 @@ public class Agent {
 	 * @param matAgent the matAgent to set
 	 */
 	public void setMatAgent(String matAgent) {
-		this.matAgent = matAgent;
+		this.matAgent = new String(matAgent);
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Agent {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = new String(password);
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class Agent {
 	 * @param nom the nom to set
 	 */
 	public void setName(String nom) {
-		this.name = nom;
+		this.name = new String(nom);
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class Agent {
 	 * @param poste the poste to set
 	 */
 	public void setPoste(String poste) {
-		this.poste = poste;
+		this.poste = new String(poste);
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class Agent {
 	 * @param affectation the affectation to set
 	 */
 	public void setAffectation(String affectation) {
-		this.affectation = affectation;
+		this.affectation = new String(affectation);
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class Agent {
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
-		this.id = id;
+		this.id = new Long(id);
 	}
 
 	/* (non-Javadoc)

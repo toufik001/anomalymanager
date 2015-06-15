@@ -104,9 +104,9 @@ public class Authentification extends JFrame {
 	public void connexionActionPerformed() {
 		AgentDAO dao = new AgentDAO();
 		try {
-			Agent agent = dao.getByMat(matAgentField.getText());
+			GenericDao agent = dao.getByMat(matAgentField.getText());
 			String passwrd = new String(passwordField.getPassword());
-			if (Agent.password.equals(passwrd)) {
+			if (GenericDao.password.equals(passwrd)) {
 				if (agent.getPoste().equals("maintenance")) {
 					new TableauAnomalie(new AnomalieDAO().getAll());
 					this.dispose();

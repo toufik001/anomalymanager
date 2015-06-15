@@ -5,32 +5,40 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ANOMALYMANAGER_ANOMALY")
+@Table(name = "ANOMALYMANAGER_ANOMALY")
 public class Anomaly implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column
+	@Column(nullable = false, unique = true)
 	private String refAnomaly;
+	@Column(nullable = false)
 	private Date date;
+	@Column
 	private String description;
+	@Column
 	private String category;
-	private List<Reparation> repairs = new ArrayList<Reparation>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Reparation> repairs;
 
 	public Anomaly() {
+		this.date = new Date();
 	}
 
 	/**
@@ -47,20 +55,21 @@ public class Anomaly implements Serializable {
 		this.description = description;
 		this.category = category;
 	}
-	
+
 	/**
 	 * copy construct
 	 * 
 	 * @param anomaly
 	 */
 	public Anomaly(Anomaly anomaly) {
-		this.id = anomaly.getId();
-		this.refAnomaly = anomaly.getRefAnomaly();
-		this.date = anomaly.getDate();
-		this.description = anomaly.getDescription();
-		this.category = anomaly.getCategory();
-		this.repairs = anomaly.getRepairs();
+		this.setId(anomaly.getId());
+		this.setRefAnomaly(anomaly.getRefAnomaly());
+		this.setDate(anomaly.getDate());
+		this.setDescription(anomaly.getDescription());
+		this.setCategory(anomaly.getCategory());
+		if (anomaly.getRepairs() != null) this.setRepairs(anomaly.getRepairs());
 	}
+
 	/**
 	 * @return the id
 	 */
@@ -69,10 +78,11 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
-		this.id = id;
+		this.id = new Long(id);
 	}
 
 	/**
@@ -83,10 +93,11 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param refAnomaly the refAnomaly to set
+	 * @param refAnomaly
+	 *            the refAnomaly to set
 	 */
 	public void setRefAnomaly(String refAnomaly) {
-		this.refAnomaly = refAnomaly;
+		this.refAnomaly = new String(refAnomaly);
 	}
 
 	/**
@@ -97,10 +108,11 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param date
+	 *            the date to set
 	 */
 	public void setDate(Date date) {
-		this.date = date;
+		this.date = new Date(date.getTime());
 	}
 
 	/**
@@ -111,10 +123,11 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
-		this.description = description;
+		this.description = new String(description);
 	}
 
 	/**
@@ -125,10 +138,11 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param category the category to set
+	 * @param category
+	 *            the category to set
 	 */
 	public void setCategory(String category) {
-		this.category = category;
+		this.category = new String(category);
 	}
 
 	/**
@@ -139,13 +153,16 @@ public class Anomaly implements Serializable {
 	}
 
 	/**
-	 * @param repairs the repairs to set
+	 * @param repairs
+	 *            the repairs to set
 	 */
 	public void setRepairs(List<Reparation> repairs) {
-		this.repairs = repairs;
+		this.repairs = new ArrayList<Reparation>(repairs);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -161,7 +178,9 @@ public class Anomaly implements Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -206,7 +225,9 @@ public class Anomaly implements Serializable {
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

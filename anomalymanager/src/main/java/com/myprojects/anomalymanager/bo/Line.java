@@ -13,7 +13,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -66,11 +65,11 @@ public class Line implements Serializable {
 	 * @param line
 	 */
 	public Line(Line line) {
-		setId(line.getId());
-		setRefLine(line.getRefLine());
-		setStartDate(line.getStartDate());
-		setEndDate(line.getEndDate());
-		setStations(line.getStations());
+		this.setId(line.getId());
+		this.setRefLine(line.getRefLine());
+		this.setStartDate(line.getStartDate());
+		this.setEndDate(line.getEndDate());
+		this.setStations(line.getStations());
 	}
 
 	/**
@@ -141,6 +140,64 @@ public class Line implements Serializable {
 	 */
 	public void setStations(List<Station> stations) {
 		this.stations = new LinkedList<Station>(stations);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((refLine == null) ? 0 : refLine.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Line other = (Line) obj;
+		if (endDate == null) {
+			if (other.endDate != null)
+				return false;
+		} else if (!endDate.equals(other.endDate))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (refLine == null) {
+			if (other.refLine != null)
+				return false;
+		} else if (!refLine.equals(other.refLine))
+			return false;
+		if (startDate == null) {
+			if (other.startDate != null)
+				return false;
+		} else if (!startDate.equals(other.startDate))
+			return false;
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Line [id=" + id + ", refLine=" + refLine + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", stations=" + stations + "]";
 	}
 	
 	
