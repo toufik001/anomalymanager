@@ -4,7 +4,7 @@ package com.myprojects.anomalymanager.modelobject;
 import java.util.List;
 
 import com.myprojects.anomalymanager.bo.Restriction;
-import com.myprojects.anomalymanager.dao.impl.RestrictionDAO;
+import com.myprojects.anomalymanager.dao.impl.RestrictionDaoImpl;
 import com.myprojects.anomalymanager.exception.ObjectNotFoundException;
 import com.myprojects.anomalymanager.exception.TechnicalException;
 
@@ -33,7 +33,7 @@ public class ModeleDynamiqueRestriction extends ModelObject<Restriction> {
 
 	public void add(Restriction restriction, long num)
 			throws TechnicalException, ObjectNotFoundException {
-		RestrictionDAO dao = new RestrictionDAO();
+		RestrictionDaoImpl dao = new RestrictionDaoImpl();
 		dao.create(restriction, num);
 		this.getObjets().add(restriction);
 		fireTableRowsInserted(this.getObjets().size() - 1, this.getObjets()
@@ -41,7 +41,7 @@ public class ModeleDynamiqueRestriction extends ModelObject<Restriction> {
 	}
 
 	public void remove(int rowIndex) throws TechnicalException {
-		RestrictionDAO dao = new RestrictionDAO();
+		RestrictionDaoImpl dao = new RestrictionDaoImpl();
 		dao.delete((Long) getValueAt(rowIndex, 0));
 		this.getObjets().remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);

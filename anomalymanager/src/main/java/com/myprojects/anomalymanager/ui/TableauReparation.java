@@ -94,7 +94,7 @@ public class TableauReparation extends JFrame {
 
 	public static void main(String[] args) {
 		try {
-			new TableauReparation(new ReparationDAO().getAll());
+			new TableauReparation(new ReparationDaoImpl().getAll());
 		} catch (TechnicalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

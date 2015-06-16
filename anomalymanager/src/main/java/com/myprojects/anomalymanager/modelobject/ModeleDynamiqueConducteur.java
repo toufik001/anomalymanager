@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.myprojects.anomalymanager.bo.Conductor;
-import com.myprojects.anomalymanager.dao.impl.ConducteurDAO;
+import com.myprojects.anomalymanager.dao.impl.ConductorDaoImpl;
 import com.myprojects.anomalymanager.exception.ObjectNotFoundException;
 import com.myprojects.anomalymanager.exception.TechnicalException;
 
@@ -58,13 +58,13 @@ public class ModeleDynamiqueConducteur extends ModelObject<Conductor> {
 
 	public void addConducteur(Conductor conducteur, long num)
 			throws TechnicalException, ObjectNotFoundException {
-		new ConducteurDAO().create(conducteur, num);
+		new ConductorDaoImpl().create(conducteur, num);
 		conducteurs.add(conducteur);
 		fireTableRowsInserted(conducteurs.size() - 1, conducteurs.size() - 1);
 	}
 
 	public void removeConducteur(int rowIndex) throws TechnicalException {
-		new ConducteurDAO().delete((Long) getValueAt(rowIndex, 0));
+		new ConductorDaoImpl().delete((Long) getValueAt(rowIndex, 0));
 		conducteurs.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}

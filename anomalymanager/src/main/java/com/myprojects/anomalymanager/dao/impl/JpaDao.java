@@ -76,6 +76,7 @@ public class JpaDao<T,PK extends Serializable> implements GenericDao<T, PK> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> getAll() throws DaoException {
 		List<T> entities = null;

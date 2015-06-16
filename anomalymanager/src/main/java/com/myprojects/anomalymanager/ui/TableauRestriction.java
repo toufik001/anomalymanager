@@ -92,7 +92,7 @@ public class TableauRestriction extends JFrame {
 
 	public static void main(String[] args) {
 		try {
-			new TableauRestriction(new RestrictionDAO().getAll());
+			new TableauRestriction(new RestrictionDaoImpl().getAll());
 		} catch (TechnicalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

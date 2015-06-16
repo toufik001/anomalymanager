@@ -206,7 +206,7 @@ public class TableauMachine extends JFrame {
 	public static void main(String args[]) {
 
 		try {
-			new TableauMachine(new MachineDAO().getAll());
+			new TableauMachine(new MachineDaoImpl().getAll());
 		} catch (TechnicalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -287,7 +287,7 @@ public class TableauMachine extends JFrame {
 				try {
 
 					restrictions.toString();
-					restrictions = new RestrictionDAO().getAllByNum(numero);
+					restrictions = new RestrictionDaoImpl().getAllByNum(numero);
 					new TableauRestriction(restrictions);
 
 				} catch (ObjectNotFoundException e1) {

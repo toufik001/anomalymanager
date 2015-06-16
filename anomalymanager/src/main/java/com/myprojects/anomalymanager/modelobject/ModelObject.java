@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.myprojects.anomalymanager.exception.ObjectNotFoundException;
-import com.myprojects.anomalymanager.exception.TechnicalException;
 
 @SuppressWarnings("serial")
 public class ModelObject<T> extends AbstractTableModel{

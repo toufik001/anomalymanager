@@ -93,7 +93,7 @@ public class TableauAnomalie extends JFrame {
 
 	public static void main(String[] args) {
 		try {
-			new TableauAnomalie(new AnomalieDAO().getAll());
+			new TableauAnomalie(new AnomalyDaoImpl().getAll());
 		} catch (TechnicalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

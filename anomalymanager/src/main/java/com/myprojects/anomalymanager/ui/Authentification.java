@@ -102,23 +102,23 @@ public class Authentification extends JFrame {
 	}
 
 	public void connexionActionPerformed() {
-		AgentDAO dao = new AgentDAO();
+		AgentDaoImpl dao = new AgentDaoImpl();
 		try {
 			GenericDao agent = dao.getByMat(matAgentField.getText());
 			String passwrd = new String(passwordField.getPassword());
 			if (GenericDao.password.equals(passwrd)) {
 				if (agent.getPoste().equals("maintenance")) {
-					new TableauAnomalie(new AnomalieDAO().getAll());
+					new TableauAnomalie(new AnomalyDaoImpl().getAll());
 					this.dispose();
 				}
 
 				else if (agent.getPoste().equals("superviseur")) {
-					new TableauMachine(new MachineDAO().getAll())
+					new TableauMachine(new MachineDaoImpl().getAll())
 							.setVisible(true);
 					this.dispose();
 
 				} else if (agent.getPoste().equals("saisie")) {
-					new TableauMachine(new MachineDAO().getAll());
+					new TableauMachine(new MachineDaoImpl().getAll());
 					this.dispose();
 				}
 			} else

@@ -8,7 +8,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import com.myprojects.anomalymanager.bo.Machine;
-import com.myprojects.anomalymanager.dao.impl.MachineDAO;
+import com.myprojects.anomalymanager.dao.impl.MachineDaoImpl;
 import com.myprojects.anomalymanager.exception.ObjectNotFoundException;
 import com.myprojects.anomalymanager.exception.TechnicalException;
 
@@ -57,16 +57,16 @@ public class ModeleDynamiqueMachine extends ModelObject<Machine> {
 
 	public void add(Machine machine, long num) throws TechnicalException,
 			ObjectNotFoundException {
-		MachineDAO dao = new MachineDAO();
+		MachineDaoImpl dao = new MachineDaoImpl();
 		dao.create(machine, num);
 		this.getObjets().add(
-				new Machine(new MachineDAO().getNum(), machine.getSerie()));
+				new Machine(new MachineDaoImpl().getNum(), machine.getSerie()));
 		fireTableRowsInserted(this.getObjets().size() - 1, this.getObjets()
 				.size() - 1);
 	}
 
 	public void remove(int rowIndex) throws TechnicalException {
-		MachineDAO dao = new MachineDAO();
+		MachineDaoImpl dao = new MachineDaoImpl();
 		dao.delete((Long) getValueAt(rowIndex, 0));
 		this.getObjets().remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);

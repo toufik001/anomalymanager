@@ -8,7 +8,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import com.myprojects.anomalymanager.bo.Train;
-import com.myprojects.anomalymanager.dao.impl.TrainDAO;
+import com.myprojects.anomalymanager.dao.impl.TrainDaoImpl;
 import com.myprojects.anomalymanager.exception.ObjectNotFoundException;
 import com.myprojects.anomalymanager.exception.TechnicalException;
 
@@ -66,13 +66,13 @@ public class ModeleDynamiqueTrain extends ModelObject<Train> {
 
 	public void add(Train train, long num) throws TechnicalException,
 			ObjectNotFoundException {
-		new TrainDAO().create(train, num);
+		new TrainDaoImpl().create(train, num);
 		trains.add(train);
 		fireTableRowsInserted(trains.size() - 1, trains.size() - 1);
 	}
 
 	public void remove(int rowIndex) throws TechnicalException {
-		new TrainDAO().delete((Long) getValueAt(rowIndex, 0));
+		new TrainDaoImpl().delete((Long) getValueAt(rowIndex, 0));
 		trains.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}
