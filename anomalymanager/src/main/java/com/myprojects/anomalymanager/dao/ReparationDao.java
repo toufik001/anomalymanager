@@ -9,6 +9,6 @@ import com.myprojects.anomalymanager.bo.Reparation;
  * @author Baz Taoufik
  *
  */
-public interface ReparationDao extends GenericDao<Reparation, Long> {
+public interface ReparationDao extends JpaDao<Reparation, Long> {
 
 }

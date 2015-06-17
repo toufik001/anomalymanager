@@ -9,6 +9,6 @@ import com.myprojects.anomalymanager.bo.Machine;
  * @author Baz Taoufik
  *
  */
-public interface MachineDao extends GenericDao<Machine, Long> {
+public interface MachineDao extends JpaDao<Machine, Long> {
 
 }

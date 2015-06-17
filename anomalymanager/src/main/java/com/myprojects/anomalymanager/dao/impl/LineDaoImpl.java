@@ -9,7 +9,7 @@ import com.myprojects.anomalymanager.bo.Line;
  * @author aigle_du_sahara
  *
  */
-public class LineDaoImpl extends JpaDao<Line, Long> {
+public class LineDaoImpl extends JpaDaoImpl<Line, Long> {
 
 
 }

@@ -8,7 +8,7 @@ import com.myprojects.anomalymanager.bo.Agent;
  * @author Baz Taoufik
  *
  */
-public class AgentDaoImpl extends JpaDao<Agent, Long> {
+public class AgentDaoImpl extends JpaDaoImpl<Agent, Long> {
 
 	public AgentDaoImpl() {
 		super();

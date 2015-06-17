@@ -8,7 +8,7 @@ import javax.persistence.EntityNotFoundException;
 import com.myprojects.anomalymanager.exception.DaoException;
 
 
-public interface GenericDao<T, PK extends Serializable> {
+public interface JpaDao<T, PK extends Serializable> {
 
 	/**
 	 * 

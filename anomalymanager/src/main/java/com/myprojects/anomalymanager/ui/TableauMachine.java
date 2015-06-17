@@ -3,26 +3,14 @@ package com.myprojects.anomalymanager.ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import gestionAnomalie.dao.MachineDAO;
-import gestionAnomalie.dao.RestrictionDAO;
-
-import gestionAnomalie.dbo.Machine;
-import gestionAnomalie.dbo.Restriction;
-import gestionAnomalie.dbo.Table;
-import gestionAnomalieException.ObjectNotFoundException;
-import gestionAnomalieException.TechnicalException;
-
 import javax.swing.AbstractAction;
-
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,8 +18,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import modeleDynamiqueObjet.ModeleDynamiqueMachine;
-import modeleDynamiqueObjet.TableComponent;
+import com.myprojects.anomalymanager.bo.Machine;
+import com.myprojects.anomalymanager.dao.impl.MachineDaoImpl;
+import com.myprojects.anomalymanager.exception.DaoException;
+import com.myprojects.anomalymanager.modelobject.MachineDynModel;
+
 
 @SuppressWarnings("serial")
 public class TableauMachine extends JFrame {
@@ -46,8 +37,7 @@ public class TableauMachine extends JFrame {
 	private Bouton boutonAnomalies = new Bouton("Afficher les Anomalies");
 	private Bouton boutonRestrictions = new Bouton("Afficher les Restrictions");
 
-	public TableauMachine(List<Machine> machines) throws TechnicalException,
-			ObjectNotFoundException {
+	public TableauMachine() throws DaoException {
 		super();
 		this.setSize(new Dimension(1100, 600));
 		this.setTitle("les Machines");
@@ -84,7 +74,7 @@ public class TableauMachine extends JFrame {
 				java.awt.Cursor.DEFAULT_CURSOR));
 		jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 333));
 
-		table = new Table<Machine>(new ModeleDynamiqueMachine(machines));
+		table = new JTable(new MachineDynModel());
 		table.setDefaultRenderer(JComponent.class, new TableComponent());
 		table.setGridColor(new java.awt.Color(255, 102, 51));
 		table.setRequestFocusEnabled(false);
@@ -205,15 +195,13 @@ public class TableauMachine extends JFrame {
 
 	public static void main(String args[]) {
 
-		try {
-			new TableauMachine(new MachineDaoImpl().getAll());
-		} catch (TechnicalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ObjectNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				new TableauMachine();
+			} catch (DaoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 
 	}
 
@@ -221,24 +209,24 @@ public class TableauMachine extends JFrame {
 		@SuppressWarnings("static-access")
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
-			String serie = jop.showInputDialog(null,
-					"entrer la s�rie de la machine: ", "Ajout d'une Machine",
-					JOptionPane.QUESTION_MESSAGE);
-			if (!serie.isEmpty()) {
-				try {
-					((ModeleDynamiqueMachine) table.getModel()).add(
-							new Machine(serie), 0);
-				} catch (TechnicalException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ObjectNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			jop2.showMessageDialog(null, "la serie que vous avez ajout� est  "
-					+ serie, "Identit�", JOptionPane.INFORMATION_MESSAGE);
+//			JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+//			String serie = jop.showInputDialog(null,
+//					"entrer la s�rie de la machine: ", "Ajout d'une Machine",
+//					JOptionPane.QUESTION_MESSAGE);
+//			if (!serie.isEmpty()) {
+//				try {
+//					((MachineDynModel) table.getModel()).add(
+//							new Machine(serie), 0);
+//				} catch (TechnicalException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (ObjectNotFoundException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//			jop2.showMessageDialog(null, "la serie que vous avez ajout� est  "
+//					+ serie, "Identit�", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -247,28 +235,28 @@ public class TableauMachine extends JFrame {
 		@SuppressWarnings("static-access")
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int[] selection = table.getSelectedRows();
-			JOptionPane jop = new JOptionPane();
-			int option;
-			if (selection.length != 0) {
-				option = jop.showConfirmDialog(null,
-						"Voulez-vous vraiment supprimer la Machine ?",
-						"Suppression", JOptionPane.YES_NO_OPTION,
-						JOptionPane.QUESTION_MESSAGE);
-				if (option == JOptionPane.YES_OPTION) {
-					for (int i = selection.length - 1; i >= 0; i--) {
-						try {
-							((ModeleDynamiqueMachine) table.getModel())
-									.remove(selection[i]);
-						} catch (TechnicalException e1) {
-							e1.printStackTrace();
-						}
-					}
-				}
-			} else
-				JOptionPane.showMessageDialog(null,
-						"vous-devez selectionner une machine", "Information",
-						JOptionPane.INFORMATION_MESSAGE);
+//			int[] selection = table.getSelectedRows();
+//			JOptionPane jop = new JOptionPane();
+//			int option;
+//			if (selection.length != 0) {
+//				option = jop.showConfirmDialog(null,
+//						"Voulez-vous vraiment supprimer la Machine ?",
+//						"Suppression", JOptionPane.YES_NO_OPTION,
+//						JOptionPane.QUESTION_MESSAGE);
+//				if (option == JOptionPane.YES_OPTION) {
+//					for (int i = selection.length - 1; i >= 0; i--) {
+//						try {
+//							((MachineDynModel) table.getModel())
+//									.remove(selection[i]);
+//						} catch (TechnicalException e1) {
+//							e1.printStackTrace();
+//						}
+//					}
+//				}
+//			} else
+//				JOptionPane.showMessageDialog(null,
+//						"vous-devez selectionner une machine", "Information",
+//						JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	}
@@ -277,25 +265,25 @@ public class TableauMachine extends JFrame {
 
 		@Override
 		public void mouseClicked(java.awt.event.MouseEvent e) {
-			if (e.getClickCount() == 2) {
-				Point p = e.getPoint();
-				int row = table.rowAtPoint(p);
-
-				ArrayList<Restriction> restrictions = new ArrayList<Restriction>();
-				Long numero = (Long) table.getModel().getValueAt(row, 0);
-
-				try {
-
-					restrictions.toString();
-					restrictions = new RestrictionDaoImpl().getAllByNum(numero);
-					new TableauRestriction(restrictions);
-
-				} catch (ObjectNotFoundException e1) {
-					JOptionPane.showMessageDialog(null, e1.getMessage(),
-							"Information", JOptionPane.INFORMATION_MESSAGE);
-				}
-
-			}
+//			if (e.getClickCount() == 2) {
+//				Point p = e.getPoint();
+//				int row = table.rowAtPoint(p);
+//
+//				ArrayList<Restriction> restrictions = new ArrayList<Restriction>();
+//				Long numero = (Long) table.getModel().getValueAt(row, 0);
+//
+//				try {
+//
+//					restrictions.toString();
+//					restrictions = new RestrictionDaoImpl().getAllByNum(numero);
+//					new TableauRestriction(restrictions);
+//
+//				} catch (ObjectNotFoundException e1) {
+//					JOptionPane.showMessageDialog(null, e1.getMessage(),
+//							"Information", JOptionPane.INFORMATION_MESSAGE);
+//				}
+//
+//			}
 		}
 
 		@Override

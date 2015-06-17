@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
-import com.myprojects.anomalymanager.dao.GenericDao;
+import com.myprojects.anomalymanager.dao.JpaDao;
 import com.myprojects.anomalymanager.exception.DaoException;
 
 /**
@@ -20,15 +20,15 @@ import com.myprojects.anomalymanager.exception.DaoException;
  * @param <PK> primary Key
  *
  */
-public class JpaDao<T,PK extends Serializable> implements GenericDao<T, PK> {
+public class JpaDaoImpl<T,PK extends Serializable> implements JpaDao<T, PK> {
 	
 	protected Class<T> entityClass;
 	
-	@PersistenceContext
+	@PersistenceContext(unitName="anomalymanager")
 	protected EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")
-	public JpaDao() {
+	public JpaDaoImpl() {
 		ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
 		this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
 	}
@@ -81,8 +81,12 @@ public class JpaDao<T,PK extends Serializable> implements GenericDao<T, PK> {
 	public List<T> getAll() throws DaoException {
 		List<T> entities = null;
 		try {
-			entities = (List<T>) entityManager.createQuery("SELECT e FROM " + entityClass.getName() + "e");
+			if (entityManager != null) {
+				entities = (List<T>) entityManager.createQuery("SELECT e FROM " + entityClass.getName() + "e");
+			}
+			
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new DaoException(e.getMessage(), e);
 		}
 		return entities;

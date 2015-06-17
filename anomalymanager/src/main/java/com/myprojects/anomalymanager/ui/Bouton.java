@@ -8,6 +8,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,9 +24,9 @@ public class Bouton extends JButton implements MouseListener {
 	public Bouton(String str) {
 		super(str);
 		this.name = str;
-
+		
 		try {
-			img = ImageIO.read(new File("fondBouton.png"));
+			img = ImageIO.read(getImage("fondBouton.png"));
 		} catch (IOException e) {
 			
 		}
@@ -32,6 +34,12 @@ public class Bouton extends JButton implements MouseListener {
 		this.addMouseListener(this);
 	}
 
+	public File getImage(String name) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		String url = classLoader.getResource("images/" + name).getFile();
+		return new File(url);
+	}
+	
 	public void paintComponent(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
@@ -71,7 +79,7 @@ public class Bouton extends JButton implements MouseListener {
 		// Nous changeons le fond en jaune pour notre image lors du survol
 		// avec le fichier fondBoutonHover.png
 		try {
-			img = ImageIO.read(new File("fondBoutonHover.png"));
+			img = ImageIO.read(getImage("fondBoutonHover.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,7 +94,7 @@ public class Bouton extends JButton implements MouseListener {
 		// bouton
 		// avec le fichier fondBouton.png
 		try {
-			img = ImageIO.read(new File("fondBouton.png"));
+			img = ImageIO.read(getImage("fondBouton.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,7 +108,7 @@ public class Bouton extends JButton implements MouseListener {
 		// Nous changeons le fond en orang� pour notre image lors du clic gauche
 		// avec le fichier fondBoutonClic.png
 		try {
-			img = ImageIO.read(new File("fondBoutonClic.png"));
+			img = ImageIO.read(getImage("fondBoutonClic.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,7 +126,7 @@ public class Bouton extends JButton implements MouseListener {
 		// Si on est � l'ext�rieur de l'objet, on dessine le fond par d�faut
 		if (event.getY() > 0) {
 			try {
-				img = ImageIO.read(new File("fondBoutonHover.png"));
+				img = ImageIO.read(getImage("fondBoutonHover.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -127,7 +135,7 @@ public class Bouton extends JButton implements MouseListener {
 		// Sinon on met le fond jaune, la souris est encore dessus...
 		else {
 			try {
-				img = ImageIO.read(new File("fondBouton.png"));
+				img = ImageIO.read(getImage("fondBouton.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -9,6 +9,6 @@ import com.myprojects.anomalymanager.bo.Station;
  * @author Baz Taoufik
  *
  */
-public class StationDaoImpl extends JpaDao<Station, Long> {
+public class StationDaoImpl extends JpaDaoImpl<Station, Long> {
 
 }

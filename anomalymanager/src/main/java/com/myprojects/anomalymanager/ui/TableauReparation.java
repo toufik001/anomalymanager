@@ -2,23 +2,16 @@ package com.myprojects.anomalymanager.ui;
 
 import java.awt.Dimension;
 import java.awt.Point;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-import gestionAnomalie.dao.ReparationDAO;
-
-import gestionAnomalie.dbo.Reparation;
-
-import gestionAnomalieException.ObjectNotFoundException;
-import gestionAnomalieException.TechnicalException;
-
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
-import modeleDynamiqueObjet.ModeleDynamiqueMachine;
-import modeleDynamiqueObjet.ModeleDynamiqueReparation;
+import com.myprojects.anomalymanager.exception.DaoException;
+import com.myprojects.anomalymanager.modelobject.ReparationDynModel;
+
 
 @SuppressWarnings("serial")
 public class TableauReparation extends JFrame {
@@ -32,8 +25,7 @@ public class TableauReparation extends JFrame {
 
 	// End of variables declaration
 
-	public TableauReparation(List<Reparation> reparations)
-			throws TechnicalException, ObjectNotFoundException {
+	public TableauReparation() throws DaoException {
 		super();
 		this.setMinimumSize(new Dimension(1100, 600));
 		this.setTitle("les Restrictions");
@@ -75,7 +67,7 @@ public class TableauReparation extends JFrame {
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
 		getContentPane().add(modifier, gridBagConstraints);
 
-		table.setModel(new ModeleDynamiqueReparation(reparations));
+		table.setModel(new ReparationDynModel());
 		jScrollPane2.setViewportView(table);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
@@ -93,15 +85,13 @@ public class TableauReparation extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		try {
-			new TableauReparation(new ReparationDaoImpl().getAll());
-		} catch (TechnicalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ObjectNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				new TableauReparation();
+			} catch (DaoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 	}
 
 	public class addAction extends AbstractAction {
@@ -116,15 +106,15 @@ public class TableauReparation extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int[] selection = table.getSelectedRows();
-			for (int i = selection.length - 1; i >= 0; i--) {
-				try {
-					((ModeleDynamiqueMachine) table.getModel())
-							.remove(selection[i]);
-				} catch (TechnicalException e1) {
-					e1.printStackTrace();
-				}
-			}
+//			int[] selection = table.getSelectedRows();
+//			for (int i = selection.length - 1; i >= 0; i--) {
+//				try {
+//					((MachineDynModel) table.getModel())
+//							.remove(selection[i]);
+//				} catch (TechnicalException e1) {
+//					e1.printStackTrace();
+//				}
+//			}
 		}
 
 	}

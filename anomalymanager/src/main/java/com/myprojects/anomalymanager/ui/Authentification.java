@@ -102,34 +102,34 @@ public class Authentification extends JFrame {
 	}
 
 	public void connexionActionPerformed() {
-		AgentDaoImpl dao = new AgentDaoImpl();
-		try {
-			GenericDao agent = dao.getByMat(matAgentField.getText());
-			String passwrd = new String(passwordField.getPassword());
-			if (GenericDao.password.equals(passwrd)) {
-				if (agent.getPoste().equals("maintenance")) {
-					new TableauAnomalie(new AnomalyDaoImpl().getAll());
-					this.dispose();
-				}
-
-				else if (agent.getPoste().equals("superviseur")) {
-					new TableauMachine(new MachineDaoImpl().getAll())
-							.setVisible(true);
-					this.dispose();
-
-				} else if (agent.getPoste().equals("saisie")) {
-					new TableauMachine(new MachineDaoImpl().getAll());
-					this.dispose();
-				}
-			} else
-				System.out.println("ca marche pas!!!");
-		} catch (TechnicalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ObjectNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		AgentDaoImpl dao = new AgentDaoImpl();
+//		try {
+//			GenericDao agent = dao.getByMat(matAgentField.getText());
+//			String passwrd = new String(passwordField.getPassword());
+//			if (JpaDao.password.equals(passwrd)) {
+//				if (agent.getPoste().equals("maintenance")) {
+//					new TableauAnomalie(new AnomalyDaoImpl().getAll());
+//					this.dispose();
+//				}
+//
+//				else if (agent.getPoste().equals("superviseur")) {
+//					new TableauMachine(new MachineDaoImpl().getAll())
+//							.setVisible(true);
+//					this.dispose();
+//
+//				} else if (agent.getPoste().equals("saisie")) {
+//					new TableauMachine(new MachineDaoImpl().getAll());
+//					this.dispose();
+//				}
+//			} else
+//				System.out.println("ca marche pas!!!");
+//		} catch (TechnicalException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ObjectNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 

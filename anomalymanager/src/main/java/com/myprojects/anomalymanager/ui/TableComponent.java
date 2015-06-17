@@ -1,4 +1,4 @@
-package com.myprojects.anomalymanager.modelobject;
+package com.myprojects.anomalymanager.ui;
 
 import java.awt.Component;
 

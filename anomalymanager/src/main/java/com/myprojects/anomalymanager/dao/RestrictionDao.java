@@ -9,6 +9,6 @@ import com.myprojects.anomalymanager.bo.Restriction;
  * @author Baz Taoufik
  *
  */
-public interface RestrictionDao extends GenericDao<Restriction, Long> {
+public interface RestrictionDao extends JpaDao<Restriction, Long> {
 
 }

@@ -1,70 +1,133 @@
 package com.myprojects.anomalymanager.modelobject;
 
-
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import com.myprojects.anomalymanager.dao.JpaDao;
+import com.myprojects.anomalymanager.exception.DaoException;
 
-@SuppressWarnings("serial")
-public class ModelObject<T> extends AbstractTableModel{
-	private List<T> objets = new ArrayList<T>();
-	private String entete[];
 
-	public ModelObject() {
-		super();
-	}
+/**
+ * 
+ * @author Baz Taoufik
+ *
+ */
+public abstract class ModelObject<T extends Serializable,PK extends Serializable> extends AbstractTableModel {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	protected JpaDao<T, PK> jpaDao;
 
-	public ModelObject(List<T> objets) {
-		super();
-		this.objets.addAll(objets);
-	}
-
-	public List<T> getObjets() {
-		return objets;
-	}
-
-	public void setObjets(List<T> objets) {
-		this.objets = objets;
-	}
+	/**
+	 * 
+	 */
+	protected List<T> datas;
+	
+	/**
+	 * 
+	 */
+	protected String[] header;
 
 	@Override
 	public int getColumnCount() {
-
-		return this.getEntete().length;
+		if (header != null) {
+			return header.length;
+		}
+		return 0;
 	}
 
 	@Override
 	public int getRowCount() {
-
-		return this.getObjets().size();
-	}
-
-	public String getColumnName(int columnIndex) {
-		return entete[columnIndex];
+		if (datas != null) {
+			return datas.size();
+		}
+		return 0;
 	}
 
 	@Override
-	public Object getValueAt(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
+	public final Object getValueAt(int row, int column) {
+		return isEmptyRow(row)? null : getObjectAt(row, column);
 	}
 
-	public void setEntete(String[] entete) {
-		this.entete = entete;
+	/**
+	 * 
+	 * @param row
+	 * @return boolean true if row is empty 
+	 */
+	private boolean isEmptyRow(int row) {
+		if (datas != null) {
+			return this.datas.get(row) != null ? false : true;
+		}
+		return true;
 	}
 
-	public String[] getEntete() {
-		return entete;
+	/**
+	 * 
+	 * @param objToAdd
+	 * @throws DaoException
+	 */
+	public void add(T objToAdd) throws DaoException {
+		jpaDao.persist(objToAdd);
+		refresh();
 	}
 
-	public void add(T obj, long num) throws TechnicalException, ObjectNotFoundException {
-
+	/**
+	 * 
+	 * @param objToRemove
+	 * @throws DaoException
+	 */
+	public void remove(T objToRemove) throws DaoException {
+		jpaDao.remove(objToRemove);
+		refresh();
 	}
 
-	public void remove(int rowIndex) throws TechnicalException {
-
+	/**
+	 * 
+	 * @param objToUpdate
+	 * @throws DaoException
+	 */
+	public void update(T objToUpdate) throws DaoException {
+		jpaDao.update(objToUpdate);
+		refresh();
 	}
 
+	/**
+	 * 
+	 * @throws DaoException
+	 */
+	public void refresh() throws DaoException {
+		datas = jpaDao.getAll();
+		fireTableDataChanged();
+	}
+	
+	/**
+	 * 
+	 * @throws DaoException
+	 */
+	protected void init() throws DaoException {
+		datas = jpaDao.getAll();
+		header = getTitles();
+	}
+	
+	/**
+	 * 
+	 * @param row
+	 * @param column
+	 * @return Object field 
+	 */
+	protected abstract Object getObjectAt(int row, int column);
+	
+	/**
+	 * 
+	 * @return String[] titles
+	 */
+	protected abstract String[] getTitles();
 }

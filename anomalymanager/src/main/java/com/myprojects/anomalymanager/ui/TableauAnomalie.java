@@ -2,22 +2,16 @@ package com.myprojects.anomalymanager.ui;
 
 import java.awt.Dimension;
 import java.awt.Point;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-import gestionAnomalie.dao.AnomalieDAO;
-
-import gestionAnomalie.dbo.Anomalie;
-import gestionAnomalieException.ObjectNotFoundException;
-import gestionAnomalieException.TechnicalException;
-
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
-import modeleDynamiqueObjet.ModeleDynamiqueAnomalie;
-import modeleDynamiqueObjet.ModeleDynamiqueMachine;
+import com.myprojects.anomalymanager.exception.DaoException;
+import com.myprojects.anomalymanager.modelobject.AnomalyDynModel;
+
 
 @SuppressWarnings("serial")
 public class TableauAnomalie extends JFrame {
@@ -31,8 +25,7 @@ public class TableauAnomalie extends JFrame {
 
 	// End of variables declaration
 
-	public TableauAnomalie(List<Anomaly> anomalies) throws TechnicalException,
-			ObjectNotFoundException {
+	public TableauAnomalie() throws DaoException{
 		super();
 		this.setMinimumSize(new Dimension(1100, 600));
 		this.setTitle("les Restrictions");
@@ -74,7 +67,7 @@ public class TableauAnomalie extends JFrame {
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
 		getContentPane().add(modifier, gridBagConstraints);
 
-		table.setModel(new ModeleDynamiqueAnomalie(anomalies));
+		table.setModel(new AnomalyDynModel());
 		jScrollPane2.setViewportView(table);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
@@ -92,15 +85,13 @@ public class TableauAnomalie extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		try {
-			new TableauAnomalie(new AnomalyDaoImpl().getAll());
-		} catch (TechnicalException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ObjectNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				new TableauAnomalie();
+			} catch (DaoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 	}
 
 	public class addAction extends AbstractAction {
@@ -115,15 +106,15 @@ public class TableauAnomalie extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int[] selection = table.getSelectedRows();
-			for (int i = selection.length - 1; i >= 0; i--) {
-				try {
-					((ModeleDynamiqueMachine) table.getModel())
-							.remove(selection[i]);
-				} catch (TechnicalException e1) {
-					e1.printStackTrace();
-				}
-			}
+//			int[] selection = table.getSelectedRows();
+//			for (int i = selection.length - 1; i >= 0; i--) {
+//				try {
+//					((MachineDynModel) table.getModel())
+//							.remove(selection[i]);
+//				} catch (TechnicalException e1) {
+//					e1.printStackTrace();
+//				}
+//			}
 		}
 
 	}
@@ -132,14 +123,14 @@ public class TableauAnomalie extends JFrame {
 
 		@Override
 		public void mouseClicked(java.awt.event.MouseEvent e) {
-			if (e.getClickCount() == 2) {
-				// System.out.println("cocococo");
-				Point p = e.getPoint();
-				int row = table.rowAtPoint(p);
-				int column = table.convertColumnIndexToModel(table
-						.columnAtPoint(p));
-				System.out.println(table.getModel().getValueAt(row, 0));
-			}
+//			if (e.getClickCount() == 2) {
+//				// System.out.println("cocococo");
+//				Point p = e.getPoint();
+//				int row = table.rowAtPoint(p);
+//				int column = table.convertColumnIndexToModel(table
+//						.columnAtPoint(p));
+//				System.out.println(table.getModel().getValueAt(row, 0));
+//			}
 		}
 
 		@Override

@@ -9,6 +9,6 @@ import com.myprojects.anomalymanager.bo.Conductor;
  * @author Baz Taoufik
  *
  */
-public interface ConductorDao extends GenericDao<Conductor, Long> {
+public interface ConductorDao extends JpaDao<Conductor, Long> {
 
 }
