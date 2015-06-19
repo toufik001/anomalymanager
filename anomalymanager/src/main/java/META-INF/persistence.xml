@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="anomalymanager" transaction-type="RESOURCE_LOCAL">
-		<non-jta-data-source>anomaly</non-jta-data-source>
-		<class>com.myprojects.anomalymanager.bo.Agent</class>
-		<class>com.myprojects.anomalymanager.bo.Anomaly</class>
-		<class>com.myprojects.anomalymanager.bo.Conductor</class>
-		<class>com.myprojects.anomalymanager.bo.Line</class>
-		<class>com.myprojects.anomalymanager.bo.Machine</class>
-		<class>com.myprojects.anomalymanager.bo.Reparation</class>
-		<class>com.myprojects.anomalymanager.bo.Restriction</class>
-		<class>com.myprojects.anomalymanager.bo.Station</class>
-		<class>com.myprojects.anomalymanager.bo.Train</class>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="anomalymanager"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>com.gnu.anomalymanager.bo.Agent</class>
+		<class>com.gnu.anomalymanager.bo.Anomaly</class>
+		<class>com.gnu.anomalymanager.bo.Conductor</class>
+		<class>com.gnu.anomalymanager.bo.Line</class>
+		<class>com.gnu.anomalymanager.bo.Machine</class>
+		<class>com.gnu.anomalymanager.bo.Reparation</class>
+		<class>com.gnu.anomalymanager.bo.Restriction</class>
+		<class>com.gnu.anomalymanager.bo.Station</class>
+		<class>com.gnu.anomalymanager.bo.Train</class>
+
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/anomalymanager"/>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="baz"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/anomalymanager" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="baz" />
+
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+			<property name="eclipselink.logging.logger" value="DefaultLogger"/>
+			<property name="eclipselink.logging.level.sql" value="FINE"/>
 		</properties>
 	</persistence-unit>
 </persistence>
