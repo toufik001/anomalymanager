@@ -27,7 +27,7 @@ import com.gnu.anomalymanager.ui.TableComponent;
 
 
 @SuppressWarnings("serial")
-public class TableauMachine extends JFrame {
+public class MachineTable extends JFrame {
 	private Bouton rechercheBouton = new Bouton("chercher");
 	private Bouton ajouter = new Bouton("Ajouter");
 	private javax.swing.JScrollPane jScrollPane1;
@@ -39,7 +39,7 @@ public class TableauMachine extends JFrame {
 	private Bouton boutonAnomalies = new Bouton("Afficher les Anomalies");
 	private Bouton boutonRestrictions = new Bouton("Afficher les Restrictions");
 
-	public TableauMachine() throws DaoException {
+	public MachineTable() throws DaoException {
 		super();
 		this.setSize(new Dimension(1100, 600));
 		this.setTitle("Machines");
@@ -199,7 +199,7 @@ public class TableauMachine extends JFrame {
 	public static void main(String args[]) {
 
 			try {
-				new TableauMachine();
+				new MachineTable();
 			} catch (DaoException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

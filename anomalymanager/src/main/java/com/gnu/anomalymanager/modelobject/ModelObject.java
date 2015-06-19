@@ -3,14 +3,11 @@ package com.gnu.anomalymanager.modelobject;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.table.AbstractTableModel;
 
 import com.gnu.anomalymanager.dao.JpaDao;
-import com.gnu.anomalymanager.dao.impl.JpaDaoImpl;
 import com.gnu.anomalymanager.exception.DaoException;
+import com.gnu.anomalymanager.manager.ModelObjectManager;
 
 
 /**
@@ -18,7 +15,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public abstract class ModelObject<T extends Serializable,PK extends Serializable> extends AbstractTableModel {
+public abstract class ModelObject<T,PK extends Serializable> extends AbstractTableModel implements ModelObjectManager {
 	
 	/**
 	 * 

@@ -4,30 +4,33 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
 import com.gnu.anomalymanager.exception.DaoException;
-import com.gnu.anomalymanager.modelobject.RestrictionDynModel;
-import com.gnu.anomalymanager.ui.AjouterRestrictions;
+import com.gnu.anomalymanager.modelobject.AnomalyDynModel;
+import com.gnu.anomalymanager.modelobject.ConductorDynModel;
 import com.gnu.anomalymanager.ui.Bouton;
 
+
 @SuppressWarnings("serial")
-public class TableauRestriction extends JFrame {
+public class ConductorTable extends JFrame {
 	// Variables declaration - do not modify
 	private Bouton ajouter = new Bouton("Ajouter");
-	private javax.swing.JScrollPane jScrollPane2;
 	private Bouton modifier = new Bouton("Modifier");
 	private Bouton supprimer = new Bouton("Supprimer");
+	private javax.swing.JScrollPane jScrollPane2;
+
 	private javax.swing.JTable table;
 
 	// End of variables declaration
 
-	public TableauRestriction() throws DaoException {
+	public ConductorTable() throws DaoException{
 		super();
 		this.setMinimumSize(new Dimension(1100, 600));
-		this.setTitle("Restrictions");
+		this.setTitle("Anomalies");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 
@@ -66,7 +69,7 @@ public class TableauRestriction extends JFrame {
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
 		getContentPane().add(modifier, gridBagConstraints);
 
-		table.setModel(new RestrictionDynModel());
+		table.setModel(new ConductorDynModel());
 		jScrollPane2.setViewportView(table);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
@@ -84,20 +87,19 @@ public class TableauRestriction extends JFrame {
 	}
 
 	public static void main(String[] args) {
-			try {
-				new TableauRestriction();
-			} catch (DaoException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+		try {
+			new ConductorTable();
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public class addAction extends AbstractAction {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			new AjouterRestrictions();
+
 		}
 	}
 
@@ -122,14 +124,14 @@ public class TableauRestriction extends JFrame {
 
 		@Override
 		public void mouseClicked(java.awt.event.MouseEvent e) {
-			if (e.getClickCount() == 2) {
-				// System.out.println("cocococo");
-				Point p = e.getPoint();
-				int row = table.rowAtPoint(p);
-				int column = table.convertColumnIndexToModel(table
-						.columnAtPoint(p));
-				System.out.println(table.getModel().getValueAt(row, 0));
-			}
+//			if (e.getClickCount() == 2) {
+//				// System.out.println("cocococo");
+//				Point p = e.getPoint();
+//				int row = table.rowAtPoint(p);
+//				int column = table.convertColumnIndexToModel(table
+//						.columnAtPoint(p));
+//				System.out.println(table.getModel().getValueAt(row, 0));
+//			}
 		}
 
 		@Override

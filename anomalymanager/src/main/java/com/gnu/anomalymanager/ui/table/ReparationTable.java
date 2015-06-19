@@ -15,7 +15,7 @@ import com.gnu.anomalymanager.ui.Bouton;
 
 
 @SuppressWarnings("serial")
-public class TableauReparation extends JFrame {
+public class ReparationTable extends JFrame {
 	// Variables declaration - do not modify
 	private Bouton ajouter = new Bouton("Ajouter");
 	private Bouton modifier = new Bouton("Modifier");
@@ -26,7 +26,7 @@ public class TableauReparation extends JFrame {
 
 	// End of variables declaration
 
-	public TableauReparation() throws DaoException {
+	public ReparationTable() throws DaoException {
 		super();
 		this.setMinimumSize(new Dimension(1100, 600));
 		this.setTitle("Reparations");
@@ -87,7 +87,7 @@ public class TableauReparation extends JFrame {
 
 	public static void main(String[] args) {
 			try {
-				new TableauReparation();
+				new ReparationTable();
 			} catch (DaoException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

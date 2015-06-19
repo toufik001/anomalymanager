@@ -1,21 +1,20 @@
 package com.gnu.anomalymanager.ui.table;
 
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
 import com.gnu.anomalymanager.exception.DaoException;
 import com.gnu.anomalymanager.modelobject.AnomalyDynModel;
+import com.gnu.anomalymanager.modelobject.LineDynModel;
 import com.gnu.anomalymanager.ui.Bouton;
 
 
 @SuppressWarnings("serial")
-public class TableauAnomalie extends JFrame {
+public class LineTable extends JFrame {
 	// Variables declaration - do not modify
 	private Bouton ajouter = new Bouton("Ajouter");
 	private Bouton modifier = new Bouton("Modifier");
@@ -26,7 +25,7 @@ public class TableauAnomalie extends JFrame {
 
 	// End of variables declaration
 
-	public TableauAnomalie() throws DaoException{
+	public LineTable() throws DaoException{
 		super();
 		this.setMinimumSize(new Dimension(1100, 600));
 		this.setTitle("Anomalies");
@@ -68,7 +67,7 @@ public class TableauAnomalie extends JFrame {
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
 		getContentPane().add(modifier, gridBagConstraints);
 
-		table.setModel(new AnomalyDynModel());
+		table.setModel(new LineDynModel());
 		jScrollPane2.setViewportView(table);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
@@ -87,7 +86,7 @@ public class TableauAnomalie extends JFrame {
 
 	public static void main(String[] args) {
 		try {
-			new TableauAnomalie();
+			new LineTable();
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
