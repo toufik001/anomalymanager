@@ -1,15 +1,24 @@
-package com.gnu.anomalymanager.manager;
+package com.gnu.anomalymanager.manager.impl;
 
 import com.gnu.anomalymanager.exception.DaoException;
+import com.gnu.anomalymanager.manager.SimpleManager;
 
-public interface ModelObjectManager<T>{
+/**
+ * 
+ * @author Baz Taoufik
+ *
+ * @param <T>
+ */
+public class SimpleManagerImpl<T> implements SimpleManager<T> {
 	
 	/**
 	 * 
 	 * @param objToAdd
 	 * @throws DaoException
 	 */
-	public void add(T objToAdd) throws DaoException;
+	public void add(T objToAdd) throws DaoException {
+		
+	}
 
 	/**
 	 * 

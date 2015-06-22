@@ -1,14 +1,10 @@
 package com.gnu.anomalymanager.ui.table;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -18,8 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import com.gnu.anomalymanager.bo.Machine;
-import com.gnu.anomalymanager.dao.impl.MachineDaoImpl;
 import com.gnu.anomalymanager.exception.DaoException;
 import com.gnu.anomalymanager.modelobject.MachineDynModel;
 import com.gnu.anomalymanager.ui.Bouton;

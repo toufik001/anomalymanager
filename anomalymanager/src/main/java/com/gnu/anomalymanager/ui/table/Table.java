@@ -20,6 +20,11 @@ import com.gnu.anomalymanager.ui.Bouton;
  */
 public abstract class Table extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// Variables declaration - do not modify
 	private Bouton addButton = new Bouton("Ajouter");
 	private Bouton editButton = new Bouton("Modifier");
