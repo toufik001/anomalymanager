@@ -9,7 +9,7 @@ import com.gnu.anomalymanager.manager.SimpleManager;
  *
  * @param <T>
  */
-public class SimpleManagerImpl<T> implements SimpleManager<T> {
+public abstract class SimpleManagerImpl<T> implements SimpleManager<T> {
 	
 	/**
 	 * 
@@ -25,19 +25,19 @@ public class SimpleManagerImpl<T> implements SimpleManager<T> {
 	 * @param objToRemove
 	 * @throws DaoException
 	 */
-	public void remove(T objToRemove) throws DaoException;
+	public abstract void remove(T objToRemove) throws DaoException;
 
 	/**
 	 * 
 	 * @param objToUpdate
 	 * @throws DaoException
 	 */
-	public void update(T objToUpdate) throws DaoException;
+	public abstract void update(T objToUpdate) throws DaoException;
 
 	/**
 	 * 
 	 * @throws DaoException
 	 */
-	public void refresh() throws DaoException;
+	public abstract void refresh() throws DaoException;
 	
 }
