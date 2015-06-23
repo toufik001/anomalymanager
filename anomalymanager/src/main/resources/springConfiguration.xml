@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="persistenceUM" class="">
+	
+	</bean>
+	
+	<bean id="agentDao" class="com.gnu.anomalymanager.dao.impl.AgentDaoImpl">
+	</bean>
+	<bean id="lineDao" class="com.gnu.anomalymanager.dao.impl.LineDaoImpl">
+	</bean>
+	<bean id="stationDao" class="com.gnu.anomalymanager.dao.impl.StationDaoImpl">
+	</bean>
+	<bean id="anomalyDao" class="com.gnu.anomalymanager.dao.impl.AnomalyDaoImpl">
+	</bean>
+	
+</beans>
