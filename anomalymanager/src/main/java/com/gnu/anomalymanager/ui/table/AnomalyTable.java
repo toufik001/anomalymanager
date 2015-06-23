@@ -2,7 +2,7 @@ package com.gnu.anomalymanager.ui.table;
 
 
 import com.gnu.anomalymanager.exception.DaoException;
-import com.gnu.anomalymanager.modelobject.ModelObject;
+import com.gnu.anomalymanager.ui.modelobject.ModelObject;
 
 
 @SuppressWarnings("serial")

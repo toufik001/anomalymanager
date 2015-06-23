@@ -11,8 +11,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
 import com.gnu.anomalymanager.exception.DaoException;
-import com.gnu.anomalymanager.modelobject.ModelObject;
 import com.gnu.anomalymanager.ui.Bouton;
+import com.gnu.anomalymanager.ui.modelobject.ModelObject;
 
 /**
  * @author Baz Taoufik

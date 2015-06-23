@@ -15,9 +15,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.gnu.anomalymanager.exception.DaoException;
-import com.gnu.anomalymanager.modelobject.MachineDynModel;
 import com.gnu.anomalymanager.ui.Bouton;
 import com.gnu.anomalymanager.ui.TableComponent;
+import com.gnu.anomalymanager.ui.modelobject.MachineDynModel;
 
 
 @SuppressWarnings("serial")

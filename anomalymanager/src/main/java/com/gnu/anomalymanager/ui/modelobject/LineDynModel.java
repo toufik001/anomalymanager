@@ -1,4 +1,4 @@
-package com.gnu.anomalymanager.modelobject;
+package com.gnu.anomalymanager.ui.modelobject;
 
 import com.gnu.anomalymanager.bo.Line;
 import com.gnu.anomalymanager.dao.impl.LineDaoImpl;

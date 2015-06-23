@@ -1,4 +1,4 @@
-package com.gnu.anomalymanager.modelobject;
+package com.gnu.anomalymanager.ui.modelobject;
 
 import java.io.Serializable;
 import java.util.List;

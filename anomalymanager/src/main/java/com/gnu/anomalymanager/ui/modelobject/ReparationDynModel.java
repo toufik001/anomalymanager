@@ -1,4 +1,4 @@
-package com.gnu.anomalymanager.modelobject;
+package com.gnu.anomalymanager.ui.modelobject;
 
 import com.gnu.anomalymanager.bo.Reparation;
 import com.gnu.anomalymanager.dao.impl.ReparationDaoImpl;
