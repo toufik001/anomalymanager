@@ -50,11 +50,12 @@ public class SimpleManagerImpl<T, ID extends Serializable> implements SimpleMana
 	}
 
 	/**
-	 * @return the jpaDao
+	 * @param jpaDao the jpaDao to set
 	 */
-	public JpaDao<T, ID> getJpaDao() {
-		return jpaDao;
+	public void setJpaDao(JpaDao<T, ID> jpaDao) {
+		this.jpaDao = jpaDao;
 	}
+
 	
 	
 

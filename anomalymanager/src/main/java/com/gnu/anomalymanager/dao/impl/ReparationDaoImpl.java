@@ -2,15 +2,13 @@ package com.gnu.anomalymanager.dao.impl;
 
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.gnu.anomalymanager.bo.Anomaly;
-import com.gnu.anomalymanager.bo.Conductor;
 import com.gnu.anomalymanager.bo.Reparation;
+import com.gnu.anomalymanager.dao.ReparationDao;
 import com.gnu.anomalymanager.exception.DaoException;
 
 /**
@@ -18,7 +16,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public class ReparationDaoImpl extends JpaDaoImpl<Reparation, Long> {
+public class ReparationDaoImpl extends JpaDaoImpl<Reparation, Long> implements ReparationDao {
 
 	public static void main(String[] args) {
 		ReparationDaoImpl dao = new ReparationDaoImpl();

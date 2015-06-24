@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import com.gnu.anomalymanager.bo.Anomaly;
 import com.gnu.anomalymanager.bo.Conductor;
+import com.gnu.anomalymanager.dao.ConductorDao;
 import com.gnu.anomalymanager.exception.DaoException;
 
 /**
@@ -15,7 +16,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public class ConductorDaoImpl extends JpaDaoImpl<Conductor, Long> {
+public class ConductorDaoImpl extends JpaDaoImpl<Conductor, Long> implements ConductorDao {
 
 	public static void main(String[] args) {
 		ConductorDaoImpl dao = new ConductorDaoImpl();

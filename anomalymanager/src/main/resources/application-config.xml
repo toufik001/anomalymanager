@@ -30,8 +30,30 @@
 	<bean id="trainDao" class="com.gnu.anomalymanager.dao.impl.TrainDaoImpl"/>
 	
 	<bean id="agentManager" class="com.gnu.anomalymanager.manager.impl.AgentManagerImpl">
-		<property name="agentDao" ref="agentDao"></property>
+		<property name="jpaDao" ref="agentDao"></property>
 	</bean>
-	
-	
+	<bean id="anomalyManager" class="com.gnu.anomalymanager.manager.impl.AnomalyManagerImpl">
+		<property name="jpaDao" ref="anomalyDao"></property>
+	</bean>
+	<bean id="conductorManager" class="com.gnu.anomalymanager.manager.impl.ConductorManagerImpl">
+		<property name="jpaDao" ref="conductorDao"></property>
+	</bean>
+	<bean id="lineManager" class="com.gnu.anomalymanager.manager.impl.LineManagerImpl">
+		<property name="jpaDao" ref="lineDao"></property>
+	</bean>
+	<bean id="machineManager" class="com.gnu.anomalymanager.manager.impl.MachineManagerImpl">
+		<property name="jpaDao" ref="machineDao"></property>
+	</bean>
+	<bean id="ReparationManager" class="com.gnu.anomalymanager.manager.impl.ReparationManagerImpl">
+		<property name="jpaDao" ref="reparationDao"></property>
+	</bean>
+	<bean id="restrictionManager" class="com.gnu.anomalymanager.manager.impl.RestrictionManagerImpl">
+		<property name="jpaDao" ref="restrictionDao"></property>
+	</bean>
+	<bean id="stationManager" class="com.gnu.anomalymanager.manager.impl.StationManagerImpl">
+		<property name="jpaDao" ref="stationDao"></property>
+	</bean>
+	<bean id="trainManager" class="com.gnu.anomalymanager.manager.impl.TrainManagerImpl">
+		<property name="jpaDao" ref="trainDao"></property>
+	</bean>
 </beans>

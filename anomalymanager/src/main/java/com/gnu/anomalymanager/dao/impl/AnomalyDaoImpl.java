@@ -37,6 +37,5 @@ public class AnomalyDaoImpl extends JpaDaoImpl<Anomaly, Long> implements Anomaly
 				e.printStackTrace();
 			}
 
-			
 	}
 }

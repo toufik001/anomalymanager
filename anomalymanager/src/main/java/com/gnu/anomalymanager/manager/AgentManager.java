@@ -3,10 +3,12 @@
  */
 package com.gnu.anomalymanager.manager;
 
+import com.gnu.anomalymanager.bo.Agent;
+
 /**
- * @author aigle_du_sahara
+ * @author Baz Taoufik
  *
  */
-public interface AgentManager {
+public interface AgentManager extends SimpleManager<Agent, Long> {
 
 }
