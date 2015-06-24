@@ -3,17 +3,15 @@
  */
 package com.gnu.anomalymanager.manager.impl;
 
+import org.springframework.transaction.annotation.Transactional;
+
+import com.gnu.anomalymanager.bo.Agent;
+
 /**
- * @author aigle_du_sahara
+ * @author Baz Taoufik
  *
  */
-public class AgentManagerImpl {
-
-	/**
-	 * 
-	 */
-	public AgentManagerImpl() {
-		// TODO Auto-generated constructor stub
-	}
+@Transactional
+public class AgentManagerImpl extends SimpleManagerImpl<Agent, Long>{
 
 }

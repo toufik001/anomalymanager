@@ -1,40 +1,28 @@
+/**
+ * 
+ */
 package com.gnu.anomalymanager.manager;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
 
 import com.gnu.anomalymanager.exception.DaoException;
 
 /**
- * 
  * @author Baz Taoufik
  *
- * @param <T>
  */
-public interface SimpleManager<T> {
+public interface SimpleManager<T, ID extends Serializable> {
+
+	public T save(T obj) throws DaoException;
 	
-	/**
-	 * 
-	 * @param objToAdd
-	 * @throws DaoException
-	 */
-	public void add(T objToAdd) throws DaoException;
-
-	/**
-	 * 
-	 * @param objToRemove
-	 * @throws DaoException
-	 */
-	public void remove(T objToRemove) throws DaoException;
-
-	/**
-	 * 
-	 * @param objToUpdate
-	 * @throws DaoException
-	 */
-	public void update(T objToUpdate) throws DaoException;
-
-	/**
-	 * 
-	 * @throws DaoException
-	 */
-	public void refresh() throws DaoException;
+	public void delete(T obj) throws DaoException;
 	
+	public T findById(ID id) throws EntityNotFoundException, DaoException;
+	
+	public List<T> getAll() throws DaoException;
+	
+	public void update(T obj) throws DaoException;
 }
