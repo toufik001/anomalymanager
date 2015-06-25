@@ -1,7 +1,6 @@
 package com.gnu.anomalymanager.ui.modelobject;
 
 import com.gnu.anomalymanager.bo.Restriction;
-import com.gnu.anomalymanager.dao.impl.RestrictionDaoImpl;
 import com.gnu.anomalymanager.exception.DaoException;
 
 /**
@@ -10,10 +9,9 @@ import com.gnu.anomalymanager.exception.DaoException;
  *
  */
 @SuppressWarnings("serial")
-public class RestrictionDynModel extends ModelObject<Restriction, Long> {
+public class RestrictionDynModel extends ModelObject<Restriction> {
 
 	public RestrictionDynModel() throws DaoException {
-		jpaDao = new RestrictionDaoImpl();
 		init();
 	}
 	

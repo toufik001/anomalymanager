@@ -10,10 +10,9 @@ import com.gnu.anomalymanager.exception.DaoException;
  *
  */
 @SuppressWarnings("serial")
-public class ReparationDynModel extends ModelObject<Reparation, Long> {
+public class ReparationDynModel extends ModelObject<Reparation> {
 
 	public ReparationDynModel() throws DaoException {
-		jpaDao = new ReparationDaoImpl();
 		init();
 	}
 	

@@ -7,7 +7,7 @@ import com.gnu.anomalymanager.bo.Conductor;
  * @author Baz Taoufik
  *
  */
-public class ConductorDynModel extends ModelObject<Conductor, Long> {
+public class ConductorDynModel extends ModelObject<Conductor> {
 	
 	/**
 	 * 

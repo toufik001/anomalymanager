@@ -13,10 +13,9 @@ import com.gnu.anomalymanager.exception.DaoException;
  *
  */
 @SuppressWarnings("serial")
-public class TrainDynModel extends ModelObject<Train, Long> {
+public class TrainDynModel extends ModelObject<Train> {
 
 	public TrainDynModel() throws DaoException {
-		jpaDao = new TrainDaoImpl();
 		init();
 	}
 	@Override

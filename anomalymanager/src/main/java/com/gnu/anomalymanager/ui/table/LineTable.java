@@ -2,7 +2,8 @@ package com.gnu.anomalymanager.ui.table;
 
 
 import com.gnu.anomalymanager.exception.DaoException;
-import com.gnu.anomalymanager.ui.modelobject.ModelObject;
+import com.gnu.anomalymanager.manager.LineManager;
+import com.gnu.anomalymanager.ui.modelobject.LineDynModel;
 
 /**
  * 
@@ -11,10 +12,19 @@ import com.gnu.anomalymanager.ui.modelobject.ModelObject;
  */
 @SuppressWarnings("serial")
 public class LineTable extends Table {
-
-	public LineTable(ModelObject modelObject) throws DaoException {
-		super(modelObject);
-		// TODO Auto-generated constructor stub
+	
+	private LineManager lineManager;
+	
+	public LineTable() {
+		try {
+			this.modelObject = new LineDynModel();
+			this.modelObject.setDatas(lineManager.getAll());
+			init();
+			this.setVisible(true);
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

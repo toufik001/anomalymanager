@@ -10,10 +10,9 @@ import com.gnu.anomalymanager.exception.DaoException;
  *
  */
 @SuppressWarnings("serial")
-public class MachineDynModel extends ModelObject<Machine, Long> {
+public class MachineDynModel extends ModelObject<Machine> {
 
 	public MachineDynModel() throws DaoException {
-		jpaDao = new MachineDaoImpl();
 		init();
 	}
 	

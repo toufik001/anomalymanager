@@ -10,7 +10,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public final class AnomalyDynModel extends ModelObject<Anomaly, Long> {
+public final class AnomalyDynModel extends ModelObject<Anomaly> {
 
 	/**
 	 * 
@@ -18,7 +18,6 @@ public final class AnomalyDynModel extends ModelObject<Anomaly, Long> {
 	private static final long serialVersionUID = 1L;
 
 	public AnomalyDynModel() throws DaoException {
-		jpaDao = new AnomalyDaoImpl();
 		init();
 	}
 

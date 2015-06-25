@@ -9,7 +9,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public final class LineDynModel extends ModelObject<Line, Long> {
+public final class LineDynModel extends ModelObject<Line> {
 
 	/**
 	 * 
@@ -17,7 +17,6 @@ public final class LineDynModel extends ModelObject<Line, Long> {
 	private static final long serialVersionUID = 1L;
 
 	public LineDynModel() throws DaoException {
-		jpaDao = new LineDaoImpl();
 		init();
 	}
 

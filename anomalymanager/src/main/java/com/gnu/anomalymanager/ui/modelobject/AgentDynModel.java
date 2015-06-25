@@ -2,8 +2,6 @@ package com.gnu.anomalymanager.ui.modelobject;
 
 
 import com.gnu.anomalymanager.bo.Agent;
-import com.gnu.anomalymanager.dao.impl.AgentDaoImpl;
-import com.gnu.anomalymanager.dao.impl.AnomalyDaoImpl;
 import com.gnu.anomalymanager.exception.DaoException;
 
 /**
@@ -11,7 +9,7 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public final class AgentDynModel extends ModelObject<Agent, Long> {
+public final class AgentDynModel extends ModelObject<Agent> {
 
 	/**
 	 * 
@@ -19,7 +17,6 @@ public final class AgentDynModel extends ModelObject<Agent, Long> {
 	private static final long serialVersionUID = 1L;
 
 	public AgentDynModel() throws DaoException {
-		jpaDao = new AgentDaoImpl();
 		init();
 	}
 

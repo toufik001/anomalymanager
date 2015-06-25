@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import com.gnu.anomalymanager.exception.DaoException;
 import com.gnu.anomalymanager.ui.Bouton;
+import com.gnu.anomalymanager.ui.modelobject.AgentDynModel;
 import com.gnu.anomalymanager.ui.modelobject.ModelObject;
 
 /**
@@ -25,24 +26,25 @@ public abstract class Table extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// Variables declaration - do not modify
+	// buttons
 	private Bouton addButton = new Bouton("Ajouter");
 	private Bouton editButton = new Bouton("Modifier");
 	private Bouton deleteButton = new Bouton("Supprimer");
 	private javax.swing.JScrollPane jScrollPane2;
-
 	private javax.swing.JTable table;
 
-	// End of variables declaration
-
 	@SuppressWarnings("rawtypes")
-	public Table(ModelObject modelObject) throws DaoException {
-		super();
+	protected ModelObject modelObject;
+	
+	// End of variables declaration
+	
+	
+	public void init() {
 		this.setMinimumSize(new Dimension(1100, 600));
 		this.setTitle("Anomalies");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-
+		
 		java.awt.GridBagConstraints gridBagConstraints;
 
 		jScrollPane2 = new javax.swing.JScrollPane();
@@ -78,7 +80,13 @@ public abstract class Table extends JFrame {
 		gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
 		getContentPane().add(editButton, gridBagConstraints);
 
-		table.setModel(modelObject);
+		try {
+			table.setModel(new AgentDynModel());
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		jScrollPane2.setViewportView(table);
 
 		gridBagConstraints = new java.awt.GridBagConstraints();
@@ -91,9 +99,12 @@ public abstract class Table extends JFrame {
 		gridBagConstraints.weighty = 1.0;
 		gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
 		getContentPane().add(jScrollPane2, gridBagConstraints);
-
-		setVisible(true);
 	}
+	
+	public Table() {
+		init();
+	}
+
 
 	public class addAction extends AbstractAction {
 

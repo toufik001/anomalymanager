@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.gnu.anomalymanager.dao.JpaDao;
 import com.gnu.anomalymanager.exception.DaoException;
 
 
@@ -14,17 +13,12 @@ import com.gnu.anomalymanager.exception.DaoException;
  * @author Baz Taoufik
  *
  */
-public abstract class ModelObject<T,PK extends Serializable> extends AbstractTableModel {
+public abstract class ModelObject<T extends Object> extends AbstractTableModel {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	protected JpaDao<T, PK> jpaDao;
 
 	/**
 	 * 
@@ -82,7 +76,7 @@ public abstract class ModelObject<T,PK extends Serializable> extends AbstractTab
 	 * @throws DaoException
 	 */
 	public void add(T objToAdd) throws DaoException {
-		jpaDao.persist(objToAdd);
+		//jpaDao.persist(objToAdd);
 		refresh();
 	}
 
@@ -92,7 +86,7 @@ public abstract class ModelObject<T,PK extends Serializable> extends AbstractTab
 	 * @throws DaoException
 	 */
 	public void remove(T objToRemove) throws DaoException {
-		jpaDao.remove(objToRemove);
+		//jpaDao.remove(objToRemove);
 		refresh();
 	}
 
@@ -102,7 +96,7 @@ public abstract class ModelObject<T,PK extends Serializable> extends AbstractTab
 	 * @throws DaoException
 	 */
 	public void update(T objToUpdate) throws DaoException {
-		jpaDao.update(objToUpdate);
+		//jpaDao.update(objToUpdate);
 		refresh();
 	}
 
@@ -111,7 +105,7 @@ public abstract class ModelObject<T,PK extends Serializable> extends AbstractTab
 	 * @throws DaoException
 	 */
 	public void refresh() throws DaoException {
-		datas = jpaDao.getAll();
+		//datas = jpaDao.getAll();
 		fireTableDataChanged();
 	}
 	
@@ -120,10 +114,17 @@ public abstract class ModelObject<T,PK extends Serializable> extends AbstractTab
 	 * @throws DaoException
 	 */
 	protected void init() throws DaoException {
-		datas = jpaDao.getAll();
+		//datas = jpaDao.getAll();
 		header = getTitles();
 	}
 	
+	/**
+	 * @param datas the datas to set
+	 */
+	public void setDatas(List<T> datas) {
+		this.datas = datas;
+	}
+
 	/**
 	 * 
 	 * @param row
